@@ -20,16 +20,19 @@ export default function TaskBoard() {
   const [taskToUpdate, setTaskToUpdate] = useState(null);
 
   function handleAddTask(newTask, isAdd) {
+    // console.log(newTask);
     if (isAdd) {
       setTasks([...tasks, newTask]);
     } else {
-      console.log(tasks);
-      tasks.map((task) => {
-        if (task.id === newTask.id) {
-          return newTask;
-        }
-        return task;
-      });
+      // console.log(tasks);
+      setTasks(
+        tasks.map((task) => {
+          if (task.id === newTask.id) {
+            return newTask;
+          }
+          return task;
+        })
+      );
     }
     setShowAddModal(false);
   }
