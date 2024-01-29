@@ -19,7 +19,7 @@ export default function TaskBoard() {
   const [showAddModal, setShowAddModal] = useState(false);
   const [taskToUpdate, setTaskToUpdate] = useState(null);
 
-  function handleAddTask(newTask, isAdd) {
+  function handleAddEditTask(newTask, isAdd) {
     // console.log(newTask);
     if (isAdd) {
       setTasks([...tasks, newTask]);
@@ -42,10 +42,19 @@ export default function TaskBoard() {
     setShowAddModal(true);
   }
 
+  function onCloseClick() {
+    setShowAddModal(false);
+    setTaskToUpdate(null);
+  }
+
   return (
     <section className="mb-20" id="tasks">
       {showAddModal && (
-        <AddTaskModal onSave={handleAddTask} taskToUpdate={taskToUpdate} />
+        <AddTaskModal
+          onSave={handleAddEditTask}
+          taskToUpdate={taskToUpdate}
+          handleCloseClick={onCloseClick}
+        />
       )}
       <div className="container">
         {/* Search Box  */}
