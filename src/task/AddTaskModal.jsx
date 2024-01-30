@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 
-export default function AddTaskModal({ onSave, taskToUpdate, onCloseClick }) {
+export default function AddTaskModal({
+  onSave,
+  taskToUpdate,
+  handleCloseClick,
+}) {
   const [task, setTask] = useState(
     taskToUpdate || {
       id: crypto.randomUUID(),
@@ -94,10 +98,7 @@ export default function AddTaskModal({ onSave, taskToUpdate, onCloseClick }) {
         </div>
         <div className="mt-16 flex justify-center lg:mt-20">
           <button
-            onClick={(e) => {
-              e.preventDefault();
-              onCloseClick;
-            }}
+            onClick={handleCloseClick}
             className="rounded bg-red-600 px-4 py-2 mr-2 text-white transition-all hover:opacity-80"
           >
             Close
